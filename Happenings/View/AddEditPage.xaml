@@ -1,0 +1,52 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Happenings.View.AddEditPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="{Binding Path=LocalizedResources.ApplicationNameCaps, Source={StaticResource Localization}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+			<TextBlock x:Name="PageTitle" Text="{Binding Path=LocalizedResources.CreateNew, Source={StaticResource Localization}}" Margin="9,-7,0,0" Foreground="{StaticResource PhoneAccentBrush}" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+        
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+			<TextBlock Text="{Binding Path=LocalizedResources.Name, Source={StaticResource Localization}}" Height="25" Margin="12,6,6,0" VerticalAlignment="Top" />
+            <TextBox Height="75" x:Name="NameTextBox" Text="" VerticalAlignment="Top" Margin="0,28,2,0" />
+			<TextBlock Text="{Binding Path=LocalizedResources.Date, Source={StaticResource Localization}}" Height="25" VerticalAlignment="Top" Margin="12,97,6,0" />
+            <toolkit:DatePicker x:Name="DatePicker" Margin="0,118,249,343" />
+			<TextBlock Text="{Binding Path=LocalizedResources.Image, Source={StaticResource Localization}}" Height="35" VerticalAlignment="Top" Margin="12,265,6,0" />
+			<StackPanel Background="{StaticResource PhoneAccentBrush}" Margin="12,303,271,59" Width="173" Height="173">
+				<Image x:Name="ItemImage" Source="../ApplicationTile.png" Width="173" Height="173" />
+			</StackPanel>
+			<Button x:Name="PhotoPickerButton" Content="{Binding Path=LocalizedResources.Choose, Source={StaticResource Localization}}" Click="OnPhotoPickerButtonClick" Margin="191,293,6,171" />
+			<Button x:Name="DefaultImage" Content="{Binding Path=LocalizedResources.UseDefault, Source={StaticResource Localization}}" Click="OnDefaultImageButtonClick" Margin="191,357,6,106" />
+            <CheckBox x:Name="ShowMonthsAndDaysOnLiveTileCheckBox" Margin="0,179,0,276">
+                <CheckBox.Content>
+                    <TextBlock Text="{Binding Path=LocalizedResources.ShowMonthsAndDaysOnLiveTile, Source={StaticResource Localization}}" Style="{StaticResource PhoneTextNormalStyle}" />
+                </CheckBox.Content>
+            </CheckBox>
+        </Grid>
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+			<shell:ApplicationBarIconButton IconUri="/Images/appbar.save.rest.png" Text="sample text" Click="OnAppBarSaveIconClick"/>
+			<shell:ApplicationBarIconButton IconUri="/Images/appbar.cancel.rest.png" Text="sample text" Click="OnAppBarCancelIconClick" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>

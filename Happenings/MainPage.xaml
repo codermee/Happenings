@@ -1,0 +1,46 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Happenings.StartPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    xmlns:uc="clr-namespace:Happenings.View"
+	FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <controls:Pivot Title="{Binding Path=LocalizedResources.ApplicationNameCaps, Source={StaticResource Localization}}">
+			<controls:PivotItem Header="{Binding Path=LocalizedResources.AllHeader, Source={StaticResource Localization}}">
+				<Grid>
+					<uc:ListControl x:Name="AllListControl"/>
+				</Grid>
+			</controls:PivotItem>
+			<controls:PivotItem Header="{Binding Path=LocalizedResources.UpcomingHeader, Source={StaticResource Localization}}">
+				<Grid>
+					<uc:ListControl x:Name="UpcomingListControl"/>
+				</Grid>
+			</controls:PivotItem>
+			<controls:PivotItem Header="{Binding Path=LocalizedResources.PassedHeader, Source={StaticResource Localization}}">
+				<Grid>
+					<uc:ListControl x:Name="PassedListControl"/>
+				</Grid>
+			</controls:PivotItem>
+		</controls:Pivot>
+    </Grid>
+
+	<phone:PhoneApplicationPage.ApplicationBar>
+		<shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+			<shell:ApplicationBarIconButton IconUri="/Images/appbar.add.rest.png" Text="sample text" Click="OnAppBarAddIconClick" />
+			<shell:ApplicationBar.MenuItems>
+				<shell:ApplicationBarMenuItem x:Name="AppBarSettingsMenuItem" Text="sample text" Click="OnAppBarSettingsMenuItemClick"/>
+				<shell:ApplicationBarMenuItem x:Name="AppBarAboutMenuItem" Text="sample text" Click="OnAppBarAboutMenuItemClick"/>
+			</shell:ApplicationBar.MenuItems>
+		</shell:ApplicationBar>
+	</phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>
